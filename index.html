@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/css/bootstrap.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+	  <h1>Admin Panel</h1>
+		  <ul class="nav nav-tabs">
+			  <li>{{#link-to 'movies'}}Movies{{/link-to}}</li>
+			  <li><a href="#">Showtimes</a></li>
+			  <li><a href="#">Theatres</a></li>
+			  <li><a href="#">Screens</a></li>
+		 </ul>
+		 {{ outlet }}
+  </script>
+
+  
+  <script type="text/x-handlebars" id="movies">
+	  <div class="col-lg-3">
+		  <a href="#">Create movies</a><br>
+		  <a href="#">Edit movies</a><br>
+		  <a href="#">Delete movies</a><br>
+	  </div>
+	  <div class="col-lg-9">
+		  {{ outlet }}
+	  </div>
+  </script>
+  <script type="text/x-handlebars" id="createmovies">
+	  <div class="createmovies">
+		  {{ input type="text" placeholder="Name" name="name" }}<br>
+		  {{ textarea name="description" placeholder="Description"}}<br>
+		  {{ input type="number" placeholder="Length" name="length" }}<br>
+		  <button {{ action 'createmovie' }}>Create</button>
+	</div>
+</script>
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
