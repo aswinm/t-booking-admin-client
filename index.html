@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
-  <script src="http://builds.emberjs.com.s3.amazonaws.com/tags/v1.0.0/ember.js">
-
-  </script>
-   <script src="http://builds.emberjs.com/beta/ember-data.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>-->
+   
 		<meta charset="utf-8">
 		<title>Admin Panel</title>
 		<link rel="stylesheet" href="css/normalize.css">
@@ -18,7 +14,7 @@
 		<script type="text/x-handlebars">
 			<h1>Admin Panel</h1>
 			<ul class="nav nav-tabs">
-				<li>{{#link-to 'movies'}}Movies{{/link-to}}</li>
+				<li>{{#link-to 'movie'}}Movies{{/link-to}}</li>
 				<li><a href="#">Showtimes</a></li>
 				<li><a href="#">Theatres</a></li>
 				<li><a href="#">Screens</a></li>
@@ -27,11 +23,10 @@
 		</script>
 
 
-		<script type="text/x-handlebars" id="movies">
+		<script type="text/x-handlebars" id="movie">
 			<div class="col-lg-3">
-				{{#link-to 'createmovies'}} Create movies{{/link-to}}<br>
-				<a href="#">Edit movies</a><br>
-				<a href="#">Delete movies</a><br>
+				{{#link-to 'createmovie'}} Create movies{{/link-to}}<br>
+				<a href="#">List movies</a><br>
 			</div>
 			<div class="col-lg-9">
 				<div id="list">
@@ -54,11 +49,19 @@
 				<button {{ action 'createmovie' }}>Create</button>
 			</div>
 		</script>
-		<script src="js/libs/jquery-1.10.2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.1.2.js"></script>
+  <script src="http://builds.emberjs.com/ember-latest.js"></script>-->
+  
+  <script src="http://builds.emberjs.com/tags/v1.0.0-beta.5/ember-data.min.js"></script>
+  
+<!--<script src="js/libs/jquery-1.10.2.js"></script>
 		<script src="js/libs/handlebars-1.1.2.js"></script>
 		<script src="js/libs/ember-1.5.1.js"></script>
+		<script src="js/libs/ember-data.js"></script>-->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.5.3/jquery.mockjax.js"></script>
 		<script src="js/app.js"></script>
-		<!-- to activate the test runner, add the "?test" query string parameter -->
+<!--		 to activate the test runner, add the "?test" query string parameter -->
 		<script src="tests/runner.js"></script>
 
 	</body>
