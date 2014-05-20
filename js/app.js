@@ -34,23 +34,34 @@ actions: {
 createmovie: function(data) {
 	console.log(this.get('name'));
 	$.get("http://localhost:3000/api/v1/movies/create/",{name: this.get('name'),description: this.get('description'),length: this.get('length')}).done(function(res){
-		alert("Created movie");});
+		alert("Created movie");
+
+	});
+	this.transitionTo('listmovie');
 }
 }
  
 });
  
  
-App.ListmovieController = Ember.ArrayController.extend();
+App.ListmovieController = Ember.ArrayController.extend({
+
+});
+
  
  
  
-var x;
 App.ListmovieRoute = Ember.Route.extend({
 model: function(){
-x = this.store.find('movie');
+var x = this.store.find('movie');
 	return x;
+},
+actions: {
+	reloadmodel: function(){
+		x.reload();
+	}
 }
+
 });
 
 
@@ -59,16 +70,16 @@ App.MovieRoute = Ember.Route.extend({
 		var z= this.store.find('movie',params.movie_id);
 		console.log(z);
 		return z;
-	},
-	reloadmodel: function(){
-		this.get('model').reload();
 	}
 	
 });
 
 App.MovieController = Ember.ObjectController.extend({
-	model: {},
 	isEditing: false,
+model: function(){
+var x = this.store.find('movie');
+	return x;
+},
 	actions: {
 		edited: function(data){
 			this.set('isEditing',false);
@@ -83,8 +94,13 @@ App.MovieController = Ember.ObjectController.extend({
 		del: function(data){
 			$.get("http://localhost:3000/api/v1/movies/delete",{ id:this.get('id')}).done(function(res){
 				alert('Deleted successfully');
-				this.get('model').reload();
 			});
+			this.store.find('movie',this.get('id')).then(
+					function(rec){
+						rec.deleteRecord();
+						rec.save();
+					});
+			this.transitionTo('listmovie');
 		}
 	}
 
