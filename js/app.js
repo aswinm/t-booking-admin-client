@@ -33,10 +33,16 @@ App.CreatemovieController = Ember.ObjectController.extend({
 actions: {
 createmovie: function(data) {
 	console.log(this.get('name'));
-	$.get("http://localhost:3000/api/v1/movies/create/",{name: this.get('name'),description: this.get('description'),length: this.get('length')}).done(function(res){
+	/*$.get("http://localhost:3000/api/v1/movies/create/",{name: this.get('name'),description: this.get('description'),length: this.get('length')}).done(function(res){
 		alert("Created movie");
 
+	});*/
+	var mov = this.store.createRecord('movie',{
+		name: this.get('name'),
+		description: this.get('description'),
+		length: this.get('length')
 	});
+	mov.save();
 	this.transitionTo('listmovie');
 }
 }
